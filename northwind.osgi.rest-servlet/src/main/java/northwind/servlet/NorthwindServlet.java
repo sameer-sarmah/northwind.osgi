@@ -57,7 +57,7 @@ public class NorthwindServlet extends HttpServlet {
 	private ICategoryService findCategoryServiceProviders() throws InvalidSyntaxException {
 		List<ICategoryService> categoryServiceProvider = new ArrayList<>();
 		BundleContext bundleContext = FrameworkUtil.getBundle(this.getClass()).getBundleContext();
-		ServiceReference<?>[] references = bundleContext.getAllServiceReferences(ICategoryProvider.class.getName(),
+		ServiceReference<?>[] references = bundleContext.getAllServiceReferences(ICategoryService.class.getName(),
 				null);
 		for (ServiceReference reference : references) {
 			ICategoryService provider = (ICategoryService) bundleContext.getService(reference);

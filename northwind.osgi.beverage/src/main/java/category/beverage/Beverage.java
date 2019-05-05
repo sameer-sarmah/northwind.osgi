@@ -22,12 +22,6 @@ public class Beverage implements ICategoryProvider{
 	private final String name="Beverages";
     private IHttpClient httpClient;
     
-    public Beverage(IHttpClient httpClient) {
-		super();
-		this.httpClient = httpClient;
-	}
-
-
 	public Category getCategory() {
 		Category beverage=new Category(id, name, "Soft drinks, coffees, teas, beers, and ales");
 		return beverage;
