@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,8 +15,10 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
+import org.osgi.service.component.annotations.Component;
 
 import com.google.gson.Gson;
+
 
 import api.ICategoryProvider;
 import api.ICategoryService;
@@ -23,7 +26,8 @@ import category.entity.Category;
 import category.entity.Product;
 import exceptions.CoreException;
 
-@WebServlet(urlPatterns = { "/api/*" }, loadOnStartup = 1)
+@Component(service = Servlet.class, property = { "osgi.http.whiteboard.servlet.pattern=api/*" })
+//@WebServlet(urlPatterns = { "/api/*" }, loadOnStartup = 1)
 public class NorthwindServlet extends HttpServlet {
 
 	public String hello() throws CoreException {
