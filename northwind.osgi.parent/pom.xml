@@ -1,0 +1,40 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>northwind.osgi</groupId>
+	<artifactId>parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<properties>
+		<springboot.version>2.1.4.RELEASE</springboot.version>
+		<maven.bundle.version>4.2.0</maven.bundle.version>
+	</properties>
+
+	<modules>
+		<module>../northwind.osgi.api</module>
+		<module>../northwind.osgi.beverage</module>
+		<module>../northwind.osgi.cereal</module>
+		<module>../northwind.osgi.httpclient</module>
+		<module>../northwind.osgi.rest</module>
+		<module>../northwind.osgi.service</module>
+	</modules>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<configuration>
+					<instructions>
+						<Service-Component>OSGI-INF/*.xml</Service-Component>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="category.beverage.Beverage">
+   <implementation class="category.beverage.Beverage"/>
+   <service>
+      <provide interface="api.ICategoryProvider"/>
+   </service>
+   <reference bind="setHttpClient" cardinality="1..1" 
+      	interface="api.IHttpClient" name="client.ApacheHttpClient" policy="static" unbind="unsetHttpClient"/>
+</scr:component>
