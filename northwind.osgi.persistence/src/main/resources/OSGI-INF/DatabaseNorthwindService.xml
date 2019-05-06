@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="northwind.service.DatabaseNorthwindService">
+   <implementation class="northwind.service.DatabaseNorthwindService"/>
+   <service>
+      <provide interface="api.ICategoryService"/>
+   </service>
+</scr:component>

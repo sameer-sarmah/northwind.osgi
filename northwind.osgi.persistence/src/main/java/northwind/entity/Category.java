@@ -1,10 +1,24 @@
-package category.entity;
+package northwind.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity()
+@Table(name="category")
 public class Category {
-
+	@Id
 	private String CategoryID;
-    private String CategoryName;
-    private String Description;
+	private String CategoryName;
+	private String Description;
+	
+    @OneToMany(mappedBy="CategoryID",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+    private List<Product> products;
     
 	public Category(String categoryID, String categoryName, String description) {
 		super();
@@ -12,12 +26,10 @@ public class Category {
 		CategoryName = categoryName;
 		Description = description;
 	}
-	
+
 	public Category() {
 		super();
 	}
-
-
 
 	public String getCategoryID() {
 		return CategoryID;
@@ -42,7 +54,13 @@ public class Category {
 	public void setDescription(String description) {
 		Description = description;
 	}
-    
-	
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
 
 }

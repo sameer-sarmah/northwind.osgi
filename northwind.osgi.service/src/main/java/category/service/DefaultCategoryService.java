@@ -11,6 +11,7 @@ import org.osgi.framework.ServiceReference;
 
 import api.ICategoryProvider;
 import api.ICategoryService;
+import api.Source;
 import category.entity.Category;
 import category.entity.Product;
 import exceptions.CoreException;
@@ -60,6 +61,11 @@ public class DefaultCategoryService implements ICategoryService {
 			categoriesProvider.add(provider);
 		}
 		return categoriesProvider;
+	}
+
+	@Override
+	public Source getSource() {
+		return Source.HTTP;
 	}
 
 }

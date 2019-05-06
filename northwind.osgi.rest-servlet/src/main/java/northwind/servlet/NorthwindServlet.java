@@ -22,12 +22,12 @@ import com.google.gson.Gson;
 
 import api.ICategoryProvider;
 import api.ICategoryService;
+import api.Source;
 import category.entity.Category;
 import category.entity.Product;
 import exceptions.CoreException;
 
 @Component(service = Servlet.class, property = { "osgi.http.whiteboard.servlet.pattern=api/*" })
-//@WebServlet(urlPatterns = { "/api/*" }, loadOnStartup = 1)
 public class NorthwindServlet extends HttpServlet {
 
 	public String hello() throws CoreException {
@@ -64,10 +64,13 @@ public class NorthwindServlet extends HttpServlet {
 			categoryServiceProvider.add(provider);
 		}
 		if (!categoryServiceProvider.isEmpty()) {
-			return categoryServiceProvider.get(0);
-		} else {
-			return null;
-		}
+			 for(ICategoryService service :categoryServiceProvider ) {
+				 if(service.getSource().equals(Source.DB)) {
+					 return service;
+				 }
+			 }
+		} 
+		return null;
 	}
 
 	private String facade(HttpServletRequest request) throws CoreException {

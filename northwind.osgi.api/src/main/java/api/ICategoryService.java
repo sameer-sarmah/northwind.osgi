@@ -10,4 +10,5 @@ public interface ICategoryService {
 
 	List<Category> findAll() throws CoreException;
 	List<Product> findAllProductsByCategory(String categoryName) throws CoreException;
+	Source getSource();
 }
