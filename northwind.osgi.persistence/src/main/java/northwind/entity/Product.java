@@ -10,22 +10,22 @@ import javax.persistence.Table;
 @Table(name="product")
 public class Product {
 	@Id 
-	private String ProductID;
-	private String ProductName;
+	private String productID;
+	private String productName;
 	
-	@JoinColumn(name="CategoryID")
+	@JoinColumn(name="categoryID")
 	@ManyToOne()
-	private Category CategoryID;
-	private String QuantityPerUnit;
-	private String UnitPrice;
+	private Category categoryID;
+	private String quantityPerUnit;
+	private String unitPrice;
 
 	public Product(String productID, String productName, Category categoryID, String quantityPerUnit, String unitPrice) {
 		super();
-		this.ProductID = productID;
-		this.ProductName = productName;
-		this.CategoryID = categoryID;
-		this.QuantityPerUnit = quantityPerUnit;
-		this.UnitPrice = unitPrice;
+		this.productID = productID;
+		this.productName = productName;
+		this.categoryID = categoryID;
+		this.quantityPerUnit = quantityPerUnit;
+		this.unitPrice = unitPrice;
 	}
 
 	
@@ -37,61 +37,61 @@ public class Product {
 
 
 	public String getProductID() {
-		return ProductID;
+		return productID;
 	}
 
 
 
 	public void setProductID(String productID) {
-		ProductID = productID;
+		this.productID = productID;
 	}
 
 
 
 	public String getProductName() {
-		return ProductName;
+		return productName;
 	}
 
 
 
 	public void setProductName(String productName) {
-		ProductName = productName;
+		this.productName = productName;
 	}
 
 
 
 	public Category getCategoryID() {
-		return CategoryID;
+		return categoryID;
 	}
 
 
 
 	public void setCategoryID(Category categoryID) {
-		CategoryID = categoryID;
+		this.categoryID = categoryID;
 	}
 
 
 
 	public String getQuantityPerUnit() {
-		return QuantityPerUnit;
+		return quantityPerUnit;
 	}
 
 
 
 	public void setQuantityPerUnit(String quantityPerUnit) {
-		QuantityPerUnit = quantityPerUnit;
+		this.quantityPerUnit = quantityPerUnit;
 	}
 
 
 
 	public String getUnitPrice() {
-		return UnitPrice;
+		return unitPrice;
 	}
 
 
 
 	public void setUnitPrice(String unitPrice) {
-		UnitPrice = unitPrice;
+		this.unitPrice = unitPrice;
 	}	
 	
 }

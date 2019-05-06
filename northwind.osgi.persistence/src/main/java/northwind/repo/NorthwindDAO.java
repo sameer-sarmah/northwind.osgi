@@ -7,6 +7,11 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.persistence.spi.PersistenceProvider;
+
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.FrameworkUtil;
+import org.osgi.framework.ServiceReference;
 
 import northwind.entity.Category;
 import northwind.entity.Product;
@@ -20,9 +25,14 @@ public class NorthwindDAO {
 	private NorthwindDAO() {}
 	
 	public static NorthwindDAO getInstance() {
-		if(dao == null) {
+		if(dao == null || factory == null) {
 			dao = new NorthwindDAO();
+			try {
 			factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+			}
+			catch(Exception e) {
+				System.err.println(e.getMessage());
+			}
 		}
 		return dao;
 	}
