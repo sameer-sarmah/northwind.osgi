@@ -75,6 +75,7 @@
 					<instructions>
 						<Meta-Persistence>META-INF/persistence.xml</Meta-Persistence>
 						<Service-Component>OSGI-INF/*.xml</Service-Component>
+						<Import-Package>org.hibernate,com.mysql.cj.jdbc,*</Import-Package>
 					</instructions>
 				</configuration>
 			</plugin>
