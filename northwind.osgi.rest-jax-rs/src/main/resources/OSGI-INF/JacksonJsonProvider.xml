@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.codehaus.jackson.jaxrs.JacksonJsonProvider" immediate="true">
+   <implementation class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>
+   <service>
+      <provide interface="javax.ws.rs.ext.MessageBodyWriter"/>
+   </service>
+</scr:component>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.glassfish.jersey.servlet.ServletContainer" immediate="true">
+   <implementation class="org.glassfish.jersey.servlet.ServletContainer"/>
+   <service>
+      <provide interface="javax.servlet.Servlet"/>
+   </service>
+   <property name="osgi.http.whiteboard.servlet.pattern" value="jersey/*" />
+   <property name="servlet.init.jersey.config.server.provider.packages" value="northwind.controller" />
+   <property name="jersey.config.server.provider.classnames" value="org.glassfish.jersey.jackson.JacksonFeature" />
+</scr:component>

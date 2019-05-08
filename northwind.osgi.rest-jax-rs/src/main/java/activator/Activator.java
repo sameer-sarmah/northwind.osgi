@@ -1,4 +1,5 @@
 package activator;
+
 import java.util.Hashtable;
 
 import javax.servlet.Servlet;
@@ -9,20 +10,19 @@ import org.osgi.framework.ServiceRegistration;
 
 import northwind.controller.NorthwindController;
 
-
 public class Activator implements BundleActivator {
 
-	  private ServiceRegistration registration;
+	private ServiceRegistration registration;
 
-	  public void start(BundleContext context) throws Exception {
-	    Hashtable props = new Hashtable();
-	    props.put("osgi.http.whiteboard.servlet.pattern", "/*");
-	    props.put("servlet.init.jersey.config.server.provider.packages", "northwind.controller");
+	public void start(BundleContext context) throws Exception {
+		try {
+			Class.forName("org.glassfish.jersey.servlet.ServletContainer");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
 
-	    this.registration = context.registerService(Servlet.class.getName(), new org.glassfish.jersey.servlet.ServletContainer(), props);
-	  }
-
-	  public void stop(BundleContext context) throws Exception {
-	    this.registration.unregister();
-	  }
+	public void stop(BundleContext context) throws Exception {
+		// this.registration.unregister();
+	}
 }
